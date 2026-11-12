@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>转角遇到字 · RSS 阅读测试</title>
+    <link>https://corner-waiting-meow.github.io/Corner-of-words/</link>
+    <description>电纸书 RSS 全文订阅与中文排版测试。</description>
+    <language>zh-CN</language>
+    <item>
+      <title>欢迎来到转角遇到字｜RSS 全文测试</title>
+      <link>https://corner-waiting-meow.github.io/Corner-of-words/books/test.xhtml</link>
+      <guid isPermaLink="true">https://corner-waiting-meow.github.io/Corner-of-words/books/test.xhtml</guid>
+      <description>一篇用来验证 RSS 全文阅读的简短测试文章。</description>
+      <content:encoded><![CDATA[
+        <h1>转角遇到字</h1>
+        <p>这是 RSS 全文显示测试。它不是正式推送内容。</p>
+        <p>中文段落：在转角遇到字。</p>
+        <p>日文段落：こんにちは、青空。</p>
+        <p><strong>加粗文字测试。</strong>如果这里显示完整，说明阅读器能够读取 RSS 的全文内容。</p>
+      ]]></content:encoded>
+    </item>
+  </channel>
+</rss>
