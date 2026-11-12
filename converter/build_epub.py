@@ -89,7 +89,8 @@ def build(input_path, output_path, title, identifier=None):
         temp_epub = temp / 'book.epub'
         command = [
             'pandoc', str(converted), '--from=gfm', '--to=epub3',
-            '--standalone', '--toc', '--toc-depth=3', '--split-level=2',
+            '--standalone', '--toc-depth=3', '--split-level=1',
+            '--epub-title-page=false',
             '--css', str(HERE / 'reader.css'),
             '--metadata', f'title={title}',
             '--metadata', 'lang=zh-CN',
