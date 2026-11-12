@@ -39,8 +39,8 @@ def parse_pipe_table(lines, start):
         return None
     output = []
     for row in rows:
-        output.append('**' + row[0] + '**')
-        output.extend('**' + k + '：**' + v for k, v in zip(header[1:], row[1:]))
+        output.append('<strong>' + row[0] + '</strong>')
+        output.extend('<strong>' + k + '：</strong>' + v for k, v in zip(header[1:], row[1:]))
         output.append('')
     return i, '\n\n'.join(output).rstrip()
 
@@ -91,6 +91,7 @@ def build(input_path, output_path, title, identifier=None):
             'pandoc', str(converted), '--from=gfm', '--to=epub3',
             '--standalone', '--toc-depth=3', '--split-level=1',
             '--epub-title-page=false',
+            '--lua-filter', str(HERE / 'compact_lists.lua'),
             '--css', str(HERE / 'reader.css'),
             '--metadata', f'title={title}',
             '--metadata', 'lang=zh-CN',
