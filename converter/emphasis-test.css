@@ -1,0 +1,11 @@
+/* Standalone style comparison: not used by the normal EPUB converter. */
+body { line-height: 1.55; }
+h1 { font-size: 1.4em; line-height: 1.3; margin: .4em 0 .75em; }
+h2 { font-size: 1.2em; line-height: 1.3; margin: 1em 0 .4em; }
+p { margin: 0 0 .6em; }
+.weight700 { font-weight: 700; }
+.weight900 { font-weight: 900; }
+mark.graylight { background-color: #dddddd; color: #000000; }
+mark.graydark { background-color: #888888; color: #000000; }
+mark.inverse { background-color: #000000; color: #ffffff; }
+.underlined { text-decoration: underline; }
