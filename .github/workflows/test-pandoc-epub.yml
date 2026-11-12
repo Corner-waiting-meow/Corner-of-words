@@ -4,6 +4,8 @@ on:
     paths:
       - 'tests/fate-destiny-kismet-full.md'
       - 'converter/build_epub.py'
+      - 'converter/compact_lists.lua'
+      - 'converter/reader.css'
   workflow_dispatch:
 
 permissions:
@@ -24,21 +26,21 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y pandoc
       - name: Make test EPUB
         run: |
-          python3 converter/build_epub.py tests/fate-destiny-kismet-full.md books/fate-destiny-kismet-pandoc-continuous.epub --title 'Fate、Destiny、Kismet：三种命运语感与文化意象' --identifier 'urn:uuid:80b4084b-39d6-47ef-b2b6-b1528689b56c'
+          python3 converter/build_epub.py tests/fate-destiny-kismet-full.md books/fate-destiny-kismet-pandoc-compact.epub --title 'Fate、Destiny、Kismet：三种命运语感与文化意象' --identifier 'urn:uuid:80b4084b-39d6-47ef-b2b6-b1528689b56c'
       - name: Add to OPDS test catalog
         run: |
           python3 - <<'PY'
           from pathlib import Path
           p = Path("opds.xml")
           data = p.read_text(encoding="utf-8")
-          uri = "https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-pandoc-continuous.epub"
+          uri = "https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-pandoc-compact.epub"
           if uri not in data:
               entry = f'''  <entry>
-            <title>Fate、Destiny、Kismet：Pandoc 连续正文测试版</title>
-            <id>urn:uuid:19d534b7-57b2-42a1-9227-34e7dc2fce71</id>
-            <updated>2026-11-13T04:30:00+08:00</updated>
+            <title>Fate、Destiny、Kismet：Pandoc 紧凑排版修正版</title>
+            <id>urn:uuid:6bd64f30-8748-422d-94c0-3dfa2cc9a371</id>
+            <updated>2026-11-13T05:00:00+08:00</updated>
             <author><name>转角遇到字</name></author>
-            <summary>Pandoc 工具连续正文测试：取消封面页与正文目录页，不再按二级标题拆章节；导航目录继续保留。</summary>
+            <summary>修复纵向对照的加粗语法和正文列表缩进，保留连续正文与导航目录。</summary>
             <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="{uri}"/>
           </entry>
           '''
@@ -49,8 +51,8 @@ jobs:
         run: |
           git config user.name "Corner_M"
           git config user.email "343871304+Corner-waiting-meow@users.noreply.github.com"
-          git add books/fate-destiny-kismet-pandoc-continuous.epub opds.xml
+          git add books/fate-destiny-kismet-pandoc-compact.epub opds.xml
           if ! git diff --cached --quiet; then
-            git commit -m "Publish continuous-layout Pandoc test EPUB"
+            git commit -m "Publish compact-paragraph Pandoc test EPUB"
             git push
           fi
