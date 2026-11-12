@@ -6,6 +6,14 @@
   <author><name>转角遇到字</name></author>
   <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://corner-waiting-meow.github.io/Corner-of-words/opds.xml"/>
   <entry>
+  <title>Fate、Destiny、Kismet：Pandoc 连续正文测试版</title>
+  <id>urn:uuid:19d534b7-57b2-42a1-9227-34e7dc2fce71</id>
+  <updated>2026-11-13T04:30:00+08:00</updated>
+  <author><name>转角遇到字</name></author>
+  <summary>Pandoc 工具连续正文测试：取消封面页与正文目录页，不再按二级标题拆章节；导航目录继续保留。</summary>
+  <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-pandoc-continuous.epub"/>
+</entry>
+  <entry>
   <title>Fate、Destiny、Kismet：Pandoc 工具测试版</title>
   <id>urn:uuid:1d47aa6c-0f4a-4bbd-87b8-d2f66ab71113</id>
   <updated>2026-11-13T04:00:00+08:00</updated>
