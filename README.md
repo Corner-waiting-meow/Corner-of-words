@@ -54,3 +54,5 @@ Corner-of-words/
 
 - [原始版 EPUB](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet.epub)：保留四列表格与无序列表。
 - [窄屏优化版 EPUB](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-compact.epub)：保持原文信息，将表格变为三组纵向对照，将无序列表显示为紧凑无圆点段落。两版都已登记至 OPDS，等待读者实机比较。
+
+- [第三版：紧凑标题 EPUB](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-compact-headings.epub)：在第二版紧凑正文基础上，将一级、二级、三级标题分别调整为相对字号 1.4em、1.2em、1.1em，并收紧标题留白。已加入 OPDS，待 P6+ 实机验证。
