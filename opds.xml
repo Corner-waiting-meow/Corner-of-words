@@ -6,6 +6,14 @@
   <author><name>转角遇到字</name></author>
   <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://corner-waiting-meow.github.io/Corner-of-words/opds.xml"/>
   <entry>
+  <title>Fate、Destiny、Kismet：Pandoc 工具测试版</title>
+  <id>urn:uuid:1d47aa6c-0f4a-4bbd-87b8-d2f66ab71113</id>
+  <updated>2026-11-13T04:00:00+08:00</updated>
+  <author><name>转角遇到字</name></author>
+  <summary>使用 Pandoc 转换器制作，保留全文与六节目录，紧凑列表和纵向对照。</summary>
+  <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href= + uri + />
+</entry>
+  <entry>
     <title>Fate、Destiny、Kismet：紧凑标题版（第三版）</title>
     <id>urn:uuid:0f675f21-e824-41ae-aebf-a015cce187af</id>
     <updated>2026-11-13T03:40:00+08:00</updated>
