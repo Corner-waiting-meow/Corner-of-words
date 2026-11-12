@@ -1,0 +1,79 @@
+name: Build e-ink emphasis comparison EPUB
+on:
+  push:
+    paths:
+      - 'tests/emphasis-styles-test.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: emphasis-style-epub-test
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pandoc
+        run: sudo apt-get update -qq && sudo apt-get install -y pandoc
+      - name: Build comparison book
+        run: |
+          pandoc tests/emphasis-styles-test.md \
+            --from=markdown+raw_html --to=epub3 --standalone \
+            --toc-depth=3 --split-level=1 --epub-title-page=false \
+            --css converter/emphasis-test.css \
+            --metadata 'title=黑白屏文字强调方式对照' \
+            --metadata 'lang=zh-CN' \
+            --metadata 'identifier=urn:uuid:c5745629-16be-44fb-b070-8fbab839334b' \
+            --output books/emphasis-styles-pandoc-test.epub
+      - name: Validate EPUB contents and emphasis styles
+        run: |
+          python3 - <<'PY'
+          from zipfile import ZipFile
+          from xml.etree import ElementTree as ET
+          path = "books/emphasis-styles-pandoc-test.epub"
+          with ZipFile(path) as z:
+              assert z.namelist()[0] == "mimetype"
+              assert z.read("mimetype") == b"application/epub+zip"
+              assert z.testzip() is None
+              files = [z.read(n).decode("utf-8") for n in z.namelist() if n.endswith(".xhtml")]
+              for source in files:
+                  ET.fromstring(source)
+              body = "".join(files)
+              for token in ('class="weight700"', 'class="weight900"', '<mark', 'class="graylight"', 'class="graydark"', 'class="inverse"', 'class="underlined"'):
+                  assert token in body, token
+          PY
+      - name: Register test book in OPDS
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          path = Path("opds.xml")
+          xml = path.read_text(encoding="utf-8")
+          url = "https://corner-waiting-meow.github.io/Corner-of-words/books/emphasis-styles-pandoc-test.epub"
+          if url not in xml:
+              entry = f'''  <entry>
+              <title>黑白屏文字强调方式对照｜EPUB 测试</title>
+              <id>urn:uuid:c5745629-16be-44fb-b070-8fbab839334b</id>
+              <updated>2026-11-13T04:28:00+08:00</updated>
+              <author><name>转角遇到字</name></author>
+              <summary>加粗、不同字重、原生高亮、浅灰与深灰高亮、反白、下划线及长句跨行测试。</summary>
+              <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="{url}"/>
+            </entry>
+            '''
+              xml = xml.replace("  <entry>", entry + "  <entry>", 1)
+              ET.fromstring(xml)
+              path.write_text(xml, encoding="utf-8")
+          PY
+      - name: Publish book and catalog
+        run: |
+          git config user.name "Corner_M"
+          git config user.email "343871304+Corner-waiting-meow@users.noreply.github.com"
+          git add books/emphasis-styles-pandoc-test.epub opds.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish e-ink emphasis style comparison EPUB"
+            git push
+          fi
