@@ -2,9 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:uuid:19e129a3-187a-4e65-9e76-e9dd8f64247c</id>
   <title>转角遇到字 · OPDS 测试目录</title>
-  <updated>2026-11-13T02:45:00+08:00</updated>
+  <updated>2026-11-13T03:24:00+08:00</updated>
   <author><name>转角遇到字</name></author>
   <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://corner-waiting-meow.github.io/Corner-of-words/opds.xml"/>
+  <entry>
+    <title>Fate、Destiny、Kismet：窄屏优化版（纵向对照、紧凑列表）</title>
+    <id>urn:uuid:0f675f21-e824-41ae-aebf-a015cce187ae</id>
+    <updated>2026-11-13T03:24:00+08:00</updated>
+    <author><name>转角遇到字</name></author>
+    <summary>与原始版内容相同，四列表格改为纵向信息块，无序列表改为紧凑段落。用于 P6+ A/B 对比。</summary>
+    <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-compact.epub"/>
+  </entry>
   <entry>
     <title>Fate、Destiny、Kismet：三种命运语感与文化意象</title>
     <id>urn:uuid:34d18d90-8c88-4e69-b99a-99fa72c09973</id>
