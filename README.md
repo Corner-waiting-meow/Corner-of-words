@@ -10,6 +10,7 @@ GitHub Pages 成功部署后：
 
 - RSS 全文订阅：`https://corner-waiting-meow.github.io/Corner-of-words/feed.xml`
 - OPDS 1.x 目录：`https://corner-waiting-meow.github.io/Corner-of-words/opds.xml`
+- EPUB 直接下载：`https://corner-waiting-meow.github.io/Corner-of-words/books/test.epub`
 - XHTML 直接下载：`https://corner-waiting-meow.github.io/Corner-of-words/books/test.xhtml`
 - 网站首页：`https://corner-waiting-meow.github.io/Corner-of-words/`
 
@@ -24,15 +25,17 @@ Corner-of-words/
 ├── feed.xml
 ├── opds.xml
 └── books/
-    └── test.xhtml
+    ├── test.xhtml
+    └── test.epub
 ```
 
 - `feed.xml`：用于测试中文标题、RSS `content:encoded` 全文与日文字符。
 - `opds.xml`：OPDS 1.x 最小目录，带 XHTML 直链。
 - `books/test.xhtml`：UTF-8、中文、日文、加粗显示的测试页面。
+- `books/test.epub`：相同内容的 EPUB 3 测试电子书，用于对比 OPDS 下载情况。
 - `index.html`：入口导航。
 
-**注意：本轮 OPDS 只有 XHTML 测试项，尚不能验证 EPUB 下载。**
+**OPDS 现在分别列出 XHTML 与 EPUB 两个测试项目，方便独立比较下载结果。**
 
 ## 启用 GitHub Pages
 
