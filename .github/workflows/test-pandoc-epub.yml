@@ -32,15 +32,15 @@ jobs:
           data = p.read_text(encoding="utf-8")
           uri = "https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-pandoc.epub"
           if uri not in data:
-              entry = """  <entry>
+              entry = f'''  <entry>
             <title>Fate、Destiny、Kismet：Pandoc 工具测试版</title>
             <id>urn:uuid:1d47aa6c-0f4a-4bbd-87b8-d2f66ab71113</id>
             <updated>2026-11-13T04:00:00+08:00</updated>
             <author><name>转角遇到字</name></author>
             <summary>使用 Pandoc 转换器制作，保留全文与六节目录，紧凑列表和纵向对照。</summary>
-            <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="""" + uri + """"/>
+            <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="{uri}"/>
           </entry>
-          """
+          '''
               data = data.replace("  <entry>", entry + "  <entry>", 1)
               p.write_text(data, encoding="utf-8")
           PY
