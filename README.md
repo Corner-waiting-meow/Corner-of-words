@@ -44,3 +44,8 @@ Corner-of-words/
 ## 隐私
 
 这里是公开仓库。不要提交个人邮箱、私密笔记或非公开内容。提交记录的作者邮箱应保持为 GitHub 的 `users.noreply.github.com` 隐私邮箱。
+
+## Notion 真实页面转换测试
+
+- [Fate、Destiny、Kismet：三种命运语感与文化意象](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet.epub)：Notion 手记完整正文转换为 EPUB，保留标题、表格、列表、加粗和斜体。已加入 OPDS，待 P6+ 实机检查排版。
+- [Notion 原页面](https://app.notion.com/p/40bab43af7a48146b750c61fdb8e953e)
