@@ -1,0 +1,55 @@
+name: Build Pandoc EPUB test
+on:
+  push:
+    paths:
+      - 'tests/fate-destiny-kismet-full.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pandoc-epub-test
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Pandoc
+        run: sudo apt-get update -qq && sudo apt-get install -y pandoc
+      - name: Make test EPUB
+        run: |
+          python3 converter/build_epub.py tests/fate-destiny-kismet-full.md books/fate-destiny-kismet-pandoc.epub --title 'Fate、Destiny、Kismet：三种命运语感与文化意象' --identifier 'urn:uuid:80b4084b-39d6-47ef-b2b6-b1528689b56c'
+      - name: Add to OPDS test catalog
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("opds.xml")
+          data = p.read_text(encoding="utf-8")
+          uri = "https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-pandoc.epub"
+          if uri not in data:
+              entry = """  <entry>
+            <title>Fate、Destiny、Kismet：Pandoc 工具测试版</title>
+            <id>urn:uuid:1d47aa6c-0f4a-4bbd-87b8-d2f66ab71113</id>
+            <updated>2026-11-13T04:00:00+08:00</updated>
+            <author><name>转角遇到字</name></author>
+            <summary>使用 Pandoc 转换器制作，保留全文与六节目录，紧凑列表和纵向对照。</summary>
+            <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="""" + uri + """"/>
+          </entry>
+          """
+              data = data.replace("  <entry>", entry + "  <entry>", 1)
+              p.write_text(data, encoding="utf-8")
+          PY
+      - name: Publish test book
+        run: |
+          git config user.name "Corner_M"
+          git config user.email "343871304+Corner-waiting-meow@users.noreply.github.com"
+          git add books/fate-destiny-kismet-pandoc.epub opds.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Pandoc-built Fate Destiny Kismet test EPUB"
+            git push
+          fi
