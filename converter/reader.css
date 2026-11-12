@@ -8,3 +8,7 @@ ul { list-style-type: none; margin: .1em 0 .7em; padding: 0; }
 ul li { margin: 0 0 .32em; padding: 0; }
 ul li > p { margin: 0; }
 table { border-collapse: collapse; max-width: 100%; }
+
+/* Same compact paragraph treatment as the hand-built P6+ EPUB. */
+.compact-items { margin: .1em 0 .7em; padding: 0; }
+.compact-items p { margin: 0 0 .32em; padding: 0; text-indent: 0; }
