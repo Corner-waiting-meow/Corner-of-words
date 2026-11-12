@@ -49,3 +49,8 @@ Corner-of-words/
 
 - [Fate、Destiny、Kismet：三种命运语感与文化意象](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet.epub)：Notion 手记完整正文转换为 EPUB，保留标题、表格、列表、加粗和斜体。已加入 OPDS，待 P6+ 实机检查排版。
 - [Notion 原页面](https://app.notion.com/p/40bab43af7a48146b750c61fdb8e953e)
+
+## 窄屏排版 A/B 测试（2026-11-13）
+
+- [原始版 EPUB](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet.epub)：保留四列表格与无序列表。
+- [窄屏优化版 EPUB](https://corner-waiting-meow.github.io/Corner-of-words/books/fate-destiny-kismet-compact.epub)：保持原文信息，将表格变为三组纵向对照，将无序列表显示为紧凑无圆点段落。两版都已登记至 OPDS，等待读者实机比较。
