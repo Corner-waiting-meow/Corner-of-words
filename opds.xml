@@ -6,6 +6,14 @@
   <author><name>转角遇到字</name></author>
   <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://corner-waiting-meow.github.io/Corner-of-words/opds.xml"/>
   <entry>
+    <title>黑白屏文字强调方式对照｜EPUB 测试</title>
+    <id>urn:uuid:c5745629-16be-44fb-b070-8fbab839334b</id>
+    <updated>2026-11-13T04:28:00+08:00</updated>
+    <author><name>转角遇到字</name></author>
+    <summary>加粗、不同字重、原生高亮、浅灰与深灰高亮、反白、下划线及长句跨行测试。</summary>
+    <link rel="http://opds-spec.org/acquisition/open-access" type="application/epub+zip" href="https://corner-waiting-meow.github.io/Corner-of-words/books/emphasis-styles-pandoc-test.epub"/>
+  </entry>
+    <entry>
   <title>Fate、Destiny、Kismet：Pandoc 紧凑排版修正版</title>
   <id>urn:uuid:6bd64f30-8748-422d-94c0-3dfa2cc9a371</id>
   <updated>2026-11-13T05:00:00+08:00</updated>
